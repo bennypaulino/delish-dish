@@ -5,7 +5,9 @@ feature "Display an individual post" do
     ramen_post = create(:post, caption: "ramen noodle soup")
 
     visit '/'
-    find(:xpath, "//a[contains(@href, 'posts/1')]").click
-    expect(page.current_path).to eq('post_path(ramen_post)')
+    # puts page.html
+    find(:xpath, "//a[contains(@href,'posts/#{ramen_post.id}')]").click
+    expect(page).to have_content('ramen noodle')
+    expect(page.current_path).to eq(post_path(ramen_post.id))
   end
 end
