@@ -1,3 +1,9 @@
 <h1>Home page for DELISH-dish</h1>
+<% @posts.each do |post| %>
+  <div>
+    <%= image_tag post.image.url(:medium) %>
+    <%= post.caption %>
+  </div>
+<% end %>
 
 <%= link_to 'New Post', new_post_path %>
