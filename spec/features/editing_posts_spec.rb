@@ -11,8 +11,9 @@ feature "Editing posts" do
   end
 
   scenario 'Whoops! User wants to edit their post' do
+    expect(page).to have_content('Edit your delicious dish')
     fill_in 'Caption', with: "D'oh! Ummm...yeah, you never saw that picture"
-    click_link 'Update Post'
+    click_button 'Update Post'
     expect(page).to have_content('Dish updated!')
     expect(page).to have_content("D'oh! Ummm...yeah, you never saw that picture")
   end
