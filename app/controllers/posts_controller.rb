@@ -13,7 +13,7 @@ class PostsController < ApplicationController
       flash[:success] = "That looks like a delicious dish!"
       redirect_to @post
     else
-      flash[:alert] = 'Forgetting something? You need an image to post here!'
+      flash.now[:alert] = 'Forgetting something? You need an image to post here!'
       render :new
     end
   end
@@ -28,9 +28,14 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find_by_id(params[:id])
-    @post.update(post_params)
-    redirect_to(post_path(@post))
-    flash[:success] = 'Dish updated!'
+    @post.update_attributes(post_params)
+    if @post.valid?
+      flash[:success] = 'Dish updated!'
+      redirect_to(post_path(@post))
+    else
+      flash.now[:alert] = "Something is wrong with your form, check it again..."
+      render :edit
+    end
   end
 
   private

@@ -17,4 +17,11 @@ feature "Editing posts" do
     expect(page).to have_content('Dish updated!')
     expect(page).to have_content("D'oh! Ummm...yeah, you never saw that picture")
   end
+
+  scenario 'Attempt to update image with wrong file' do
+    attach_file('Image', 'spec/files/yummy.zip')
+    click_button 'Update Post'
+
+    expect(page).to have_content("Something is wrong with your form, check it again...")
+  end
 end
