@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :correct_post_owner, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all.order('created_at DESC')
@@ -52,5 +53,12 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:caption, :image)
+  end
+
+  def correct_post_owner
+    unless current_user == @post.user
+      flash[:error] = "Sorry, bub, that's not your dish!"
+      redirect_to root_path
+    end
   end
 end
