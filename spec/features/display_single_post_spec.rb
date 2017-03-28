@@ -2,7 +2,9 @@ require 'rails_helper.rb'
 
 feature "Display an individual post" do
   scenario 'Can click and view a single post' do
-    ramen_post = create(:post, caption: "ramen noodle soup")
+    user = FactoryGirl.create(:user)
+    sign_in user
+    ramen_post = create(:post, caption: "ramen noodle soup", user_id: user.id)
 
     visit '/'
     # puts page.html

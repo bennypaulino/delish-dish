@@ -2,7 +2,9 @@ require 'rails_helper.rb'
 
 feature "Editing posts" do
   background do
-    ruh_roh = create(:post, caption: "Wrong pic")
+    user = FactoryGirl.create(:user)
+    sign_in user
+    ruh_roh = create(:post, caption: "Wrong pic", user_id: user.id)
 
     visit '/'
     find(:xpath, "//a[contains(@href,'posts/#{ruh_roh.id}')]").click
@@ -22,6 +24,6 @@ feature "Editing posts" do
     attach_file('Image', 'spec/files/yummy.zip')
     click_button 'Update Post'
 
-    expect(page).to have_content("Something is wrong with your form, check it again...")
+    expect(page).to have_content('Something is wrong with your form, please check it again...')
   end
 end
