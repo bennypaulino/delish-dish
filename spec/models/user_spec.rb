@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "when user_name is too short" do
-    before { @user.user_name = "blah" }
+    before { @user.user_name = "bla" }
     it { should_not be_valid }
   end
 
