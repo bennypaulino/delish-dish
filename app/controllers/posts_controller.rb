@@ -38,6 +38,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find_by_id(params[:id])
+    @post.destroy
+    redirect_to root_path
+    flash[:success] = 'Problem solved! Dish deleted.'
+  end
+
   private
 
   def post_params

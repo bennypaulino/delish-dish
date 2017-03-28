@@ -11,8 +11,8 @@ feature "Destroying posts" do
   end
 
   scenario 'User can delete a single post' do
-    click_button 'Delete Post'
-
+    click_link 'Delete Post'
+    expect(page.current_path).to eq(root_path)
     expect(page).to have_content('Problem solved! Dish deleted.')
     expect(page).to_not have_content('Big mistake')
   end
