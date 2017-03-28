@@ -3,6 +3,9 @@
   <div class="post-head">
     <div class="post-title">
       <%= @post.title %>
+      <span class="author pull-right">
+        Served by <%= @post.user.user_name %>
+      </span>
     </div>
   </div>
   <div class="image center-block">
@@ -10,9 +13,6 @@
   </div>
   <div class="post-bottom">
     <div class="caption">
-      <div class="user-name">
-        <%= @post.user.user_name %>
-      </div>
       <%= @post.caption %>
       <% if @post.user.id == current_user.id %>
         <div class="text-center edit-links">
@@ -33,7 +33,7 @@
         <%= comment.user.user_name %> - 
       </span>
       <%= comment.body %>
-      <p class="time-stamp">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
+      <p class="time-stamp pull-right">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
     </div>
   <% end %>
   <h4 class="text-center">Add a comment</h4>
