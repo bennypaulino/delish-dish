@@ -1,11 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before { @user = User.new(email: "boaty@mcboatface.com", password: 'secretpassword', password_confirmation: 'secretpassword') }
+  before { @user = User.new(email: "boaty@mcboatface.com",
+                            user_name: 'boatymcboatface',
+                            password: 'secretpassword',
+                            password_confirmation: 'secretpassword') }
 
   subject { @user }
 
   it { should respond_to(:email) }
+  it { should respond_to(:user_name) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
 
@@ -13,6 +17,11 @@ RSpec.describe User, type: :model do
 
   describe "when email is not present" do
     before { @user.email = " " }
+    it { should_not be_valid }
+  end
+
+  describe "when user_name is not present" do
+    before { @user.user_name = " " }
     it { should_not be_valid }
   end
 
