@@ -1,0 +1,96 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {  
+  background-color: #fafafa;
+  font-family: 'Advent Pro', sans-serif;
+}
+
+.navbar-brand {
+  font-size: 3rem;
+  a {
+    color: #691288;
+    text-decoration: none;
+  }
+}
+
+.navbar-default {
+  background-color: #fff;
+  height: 54px;
+  font-size: 2rem;
+  .navbar-nav li a {
+    color: #691288;
+  }
+}
+
+.navbar-container {
+  width: 640px;
+  margin: 0 auto;
+  font-family: 'Poiret One', cursive;
+}
+
+.page-title {
+  font-weight: 200;
+}
+
+.posts-wrapper {
+  padding-top: 40px;
+  margin: 0 auto;
+  max-width: 642px;
+  width: 100%;
+}
+
+.post {
+  background-color: #fff;
+  border-color: #edeeee;
+  border-style: solid;
+  border-radius: 3px;
+  border-width: 1px;
+  margin-bottom: 60px;
+}
+
+.post-head {
+  height: 64px;
+  padding: 14px 20px;
+  color: #125688;
+  font-size: 1em;
+  line-height: 1.2em;
+  .thumbnail {}
+  .name {
+    display: block;
+  }
+}
+
+.image {
+  border-bottom: 1px solid #eeefef;
+  border-top: 1px solid #eeefef;
+}
+
+.caption {
+  padding: 2em 2em;
+  font-size: 1.2em;
+  line-height: 1.2em;
+
+}
+
+.form-wrapper {
+  width: 60%;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 40px;
+  border: 1px solid #eeefef;
+  border-radius: 3px;
+}
+
+.edit-links {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.bar {
+  padding: 0 .6em;
+}
+
+.alert {
+  font-size: 1.4em;
+}
