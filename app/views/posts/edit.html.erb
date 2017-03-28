@@ -1,0 +1,13 @@
+<h1>Edit your delicious dish post</h1>
+
+<%= image_tag @post.image.url(:medium) %>
+
+<%= simple_form_for @post do |f| %>
+  <%= f.input :image %>
+  <br>
+  <%= f.input :caption %>
+  <br>
+  <%= f.button :submit %>
+<% end %>
+
+<%= link_to 'Delete Post', post_path(@post), method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } %>
