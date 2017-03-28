@@ -2,7 +2,9 @@ require 'rails_helper.rb'
 
 feature "Editing posts" do
   background do
-    ruh_roh = create(:post, caption: "Wrong pic")
+    user = FactoryGirl.create(:user)
+    sign_in user
+    ruh_roh = create(:post, caption: "Wrong pic", user_id: user.id)
 
     visit '/'
     find(:xpath, "//a[contains(@href,'posts/#{ruh_roh.id}')]").click

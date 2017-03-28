@@ -2,7 +2,9 @@ require 'rails_helper.rb'
 
 feature "Destroying posts" do
   background do
-    expendable = create(:post, caption: "Big mistake")
+    user = FactoryGirl.create(:user)
+    sign_in user
+    expendable = create(:post, caption: "Big mistake", user_id: user.id)
 
     visit '/'
     find(:xpath, "//a[contains(@href,'posts/#{expendable.id}')]").click
