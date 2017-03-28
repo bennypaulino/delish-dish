@@ -1,5 +1,8 @@
 <div class="posts-wrapper row">
   <div class="post">
+    <div class="post-head">
+        <%= @post.user.user_name %>
+    </div>
     <div class="image center-block">
       <%= image_tag @post.image.url(:medium) %>
     </div>
