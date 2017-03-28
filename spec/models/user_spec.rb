@@ -25,6 +25,11 @@ RSpec.describe User, type: :model do
     it { should_not be_valid }
   end
 
+  describe "when user_name is too short" do
+    before { @user.user_name = "blah" }
+    it { should_not be_valid }
+  end
+
   describe "email addresses should be unique" do
     before do
       duplicate_user = @user.dup
