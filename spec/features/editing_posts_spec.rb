@@ -22,6 +22,6 @@ feature "Editing posts" do
     attach_file('Image', 'spec/files/yummy.zip')
     click_button 'Update Post'
 
-    expect(page).to have_content("Something is wrong with your form, check it again...")
+    expect(page).to have_content('Something is wrong with your form, please check it again...')
   end
 end

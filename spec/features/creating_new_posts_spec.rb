@@ -16,6 +16,6 @@ feature 'Creating posts' do
     click_link 'New Post'
     fill_in 'Caption', with: 'Nothing to see here'
     click_button 'Create Post'
-    expect(page).to have_content('Forgetting something? You need an image to post here!')
+    expect(page).to have_content("Your DelishDish couldn't be created, please check the form.")
   end
 end
