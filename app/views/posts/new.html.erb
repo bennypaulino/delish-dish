@@ -1,9 +1,15 @@
-<h1>Create your delicious dish post</h1>
-
-<%= simple_form_for @post do |f| %>
-  <%= f.input :image %>
+<div class="form-wrapper">
+  <h1 class="page-title">Create your delicious dish post</h1>
   <br>
-  <%= f.input :caption %>
-  <br>
-  <%= f.button :submit %>
-<% end %>
+  <%= simple_form_for @post, html: { class: 'form-horizontal', multipart: true } do |f| %>
+    <div class="form-group">
+      <%= f.input :image %>
+    </div>
+    <div class="form-group text-center">
+      <%= f.input :caption %>
+    </div>
+    <div class="form-group text-center">
+      <%= f.button :submit, class: 'btn-success' %>
+    </div>
+  <% end %>
+</div>
