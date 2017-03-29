@@ -14,7 +14,19 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li>
-            <%= link_to "New Post", new_post_path %>
+            <%= link_to "New Post", new_post_path, class: 'new-post', :remote => true, "data-toggle" => "modal", "data-target" => "#myModal" %>
+            <div class="modal hide fade" id="my-modal" title="My modal">
+              <div class="modal-header">
+                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+                <h3 id="myModalLabel">New Post</h3>
+              </div>
+              <div class="modal-body a-unique-class">
+                New Post Body
+              </div>
+              <div class="modal-footer">
+                <button aria-hidden="true" class="btn" data-dismiss="modal">Close</button>
+              </div>
+            </div>
           </li>
           <li>
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
@@ -31,3 +43,29 @@
     </div>
   </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Serve up your delicious dish...</h4>
+      </div>
+      <%= simple_form_for Post.new do |f| %>
+        <div class="modal-body">
+          <%= f.input :title %>
+          <%= f.input :image %>
+            <br>
+            <%= f.input :caption, placeholder: 'Add a tasty description....' %>
+            <br>
+        </div>
+       
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit 'Create Post', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

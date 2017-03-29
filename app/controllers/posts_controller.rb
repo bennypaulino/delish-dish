@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:caption, :image)
+    params.require(:post).permit(:caption, :image, :title)
   end
 
   def correct_post_owner

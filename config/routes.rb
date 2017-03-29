@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   root 'posts#index'
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

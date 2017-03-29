@@ -14,14 +14,19 @@ feature "Editing posts" do
 
   scenario 'Whoops! User wants to edit their post' do
     expect(page).to have_content('Edit your delicious dish')
-    fill_in 'Caption', with: "D'oh! Ummm...yeah, you never saw that picture"
+    within all(".post_caption")[1] do
+      fill_in 'Caption', with: "D'oh! Ummm...yeah, you never saw that picture"
+    end
     click_button 'Update Post'
     expect(page).to have_content('Dish updated!')
+    # puts page.html
     expect(page).to have_content("D'oh! Ummm...yeah, you never saw that picture")
   end
 
   scenario 'Attempt to update image with wrong file' do
-    attach_file('Image', 'spec/files/yummy.zip')
+    within(".form-wrapper") do
+      attach_file('Image', 'spec/files/yummy.zip')
+    end
     click_button 'Update Post'
 
     expect(page).to have_content('Something is wrong with your form, please check it again...')
