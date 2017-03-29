@@ -1,6 +1,6 @@
 == README
 
-## DelishDish is a simple web-app for posting tasty dishes, as well as commenting on them!
+### DelishDish is a simple web-app for posting tasty dishes, as well as commenting on them!
 
 #### Built with:
 
