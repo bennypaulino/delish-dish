@@ -11,6 +11,9 @@ feature 'Creating posts' do
   scenario 'can create a post' do
 
     attach_file('Image', "spec/files/images/padthai.jpg", match: :first)
+    within(".post_title", match: :first) do
+      fill_in 'Title', with: 'Pad Thaiiiiii!!!!'
+    end
     within(".post_caption", match: :first) do
       fill_in 'Caption', with: 'yum-yum, #noodletime'
     end
