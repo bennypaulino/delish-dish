@@ -34,6 +34,12 @@
       </span>
       <%= comment.body %>
       <p class="time-stamp pull-right">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
+      <% if comment.user == current_user %>
+        <%= link_to post_comment_path(@post, comment), method: :delete, data: { post_id: @post.id, confirm: "Are you sure?" }, remote: true, id: "delete-#{comment.id}", class: "delete-comment" do %>
+          <span class="glyphicon glyphicon-trash delete-comment-icon" data-toggle="tooltip" title="delete comment">
+          </span>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
   <h4 class="text-center">Add a comment</h4>
@@ -46,3 +52,9 @@
 </div>
 <br>
 <br>
+
+<script type="text/javascript">
+  $(document).on('turbolinks:load', function() {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
