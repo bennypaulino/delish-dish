@@ -14,6 +14,8 @@
 
 * RSpec & Capybara for testing.
 
+* Travis CI
+
 ### Automated Continuous Integration with Travis CI
 
 Continuous Integration (CI) is the practice of integrating new code into the master branch frequently, to help detect merge conflicts, bugs, and improve the quality of the software a development team writes.
