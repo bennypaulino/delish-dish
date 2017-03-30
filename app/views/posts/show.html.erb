@@ -25,23 +25,13 @@
   </div>
 </div>
 
-<div class="comments">
+<div class="comments" id="comments_<%= @post.id %>">
   <h3>Comments</h3>
-  <% @post.comments.each do |comment| %>
-    <div class="comment well">
-      <span class="comment_handle">
-        <%= comment.user.user_name %> - 
-      </span>
-      <%= comment.body %>
-      <p class="time-stamp pull-right">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
-      <% if comment.user == current_user %>
-        <%= link_to post_comment_path(@post, comment), method: :delete, data: { post_id: @post.id, confirm: "Are you sure?" }, remote: true, id: "delete-#{comment.id}", class: "delete-comment" do %>
-          <span class="glyphicon glyphicon-trash delete-comment-icon" data-toggle="tooltip" title="delete comment">
-          </span>
-        <% end %>
-      <% end %>
-    </div>
+
+  <% if @post.comments %>
+    <%= render @post.comments, post: @post %>
   <% end %>
+
   <h4 class="text-center">Add a comment</h4>
   <br>
   <%= simple_form_for Comment.new, url: post_comments_path(@post) do |f| %>
