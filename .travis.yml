@@ -1,4 +1,11 @@
 language: ruby
+rvm:
+  - 2.3.3
+  
+sudo: required
+
+before_script:
+  - bin/rake db:migrate RAILS_ENV=test
 
 script:
   - bundle exec rspec
