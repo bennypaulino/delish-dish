@@ -7,7 +7,7 @@ gem 'rails', '4.2.8'
 gem 'pg', '~> 0.15'
 
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'sprockets', '2.11.0'
+gem 'sprockets', '2.12.5'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
