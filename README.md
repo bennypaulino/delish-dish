@@ -1,20 +1,28 @@
-== README
+# DelishDish
 
-### DelishDish is a simple web-app for posting tasty dishes, as well as commenting on them!
+## DelishDish is a simple web-app for posting tasty dishes, as well as commenting on them!
 
-#### Built with:
+## Built with:
 
 * Ruby 2.3.3
 
-* Rails 4.2.8
+* [Rails 4.2.8](https://guides.rubyonrails.org/v4.2.8/) - The web framework used
 
-* PostgreSQL
+* PostgreSQL - Database
 
-* Paperclip gem for image handling.
+* [Bootstrap](https://getbootstrap.com/docs/3.3/) - CSS framework
 
-* RSpec & Capybara for testing.
+* [Paperclip](https://github.com/thoughtbot/paperclip) gem for image handling.
 
-* Travis CI
+
+## Technologies Used
+
+* * AJAX for deletion of comments
+
+* [RSpec](https://github.com/rspec/rspec) & [Capybara](https://github.com/teamcapybara/capybara) for testing.
+
+* [Travis CI](https://github.com/travis-ci/travis-ci) - Continuous Integration tool
+
 
 ### Automated Continuous Integration with Travis CI
 
@@ -28,3 +36,38 @@ Travis CI configuration how-to and example:
 - [.travis.yml](.travis.yml) - Travis CI's configuration file (with instructions)
 - [DelishDish Travis CI build!](https://travis-ci.org/bennypaulino/delish-dish)
 - Travis CI badge for DelishDish: [![Build Status](https://travis-ci.org/bennypaulino/delish-dish.svg?branch=master)](https://travis-ci.org/bennypaulino/delish-dish)
+
+
+### What is being tested?
+
+End to end testing from invalid submission to a valid submission for a post, including cropping an image, deleting a post, visiting a different user, testing the number of posts a user has, and more.
+
+
+```ruby
+require 'rails_helper'
+
+feature 'User authentication' do
+  background do
+    user = FactoryGirl.create(:user)
+  end
+
+  scenario 'can log in from the index page' do
+    visit '/'
+    expect(page).to_not have_content('New Post')
+
+    click_link 'Login'
+    fill_in 'Email', with: 'big@lebowski.com'
+    fill_in 'Password', with: 'nicemarmot'
+
+    click_button 'Log in'
+    # puts page.html
+    expect(page).to have_content('Signed in successfully')
+    expect(page).to_not have_content('Register')
+    expect(page).to have_content('Logout')
+  end
+end
+```
+
+## Acknowledgements
+
+* [Factory Girl](https://github.com/thoughtbot/factory_bot) gem
