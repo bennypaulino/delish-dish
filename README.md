@@ -1,6 +1,6 @@
 # DelishDish
 
-## DelishDish is a simple web-app for posting tasty dishes, as well as commenting on them!
+DelishDish is a simple web-app for posting tasty dishes, as well as commenting on them!
 
 ## Built with:
 
@@ -12,12 +12,12 @@
 
 * [Bootstrap](https://getbootstrap.com/docs/3.3/) - CSS framework
 
-* [Paperclip](https://github.com/thoughtbot/paperclip) gem for image handling.
+
 
 
 ## Technologies Used
 
-* * AJAX for deletion of comments
+* AJAX for deletion of comments
 
 * [RSpec](https://github.com/rspec/rspec) & [Capybara](https://github.com/teamcapybara/capybara) for testing.
 
@@ -71,3 +71,4 @@ end
 ## Acknowledgements
 
 * [Factory Girl](https://github.com/thoughtbot/factory_bot) gem
+* [Paperclip](https://github.com/thoughtbot/paperclip) gem for image handling.
